@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Anushi Mittal — Data & BI Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0f2444;
+  --steel:#1d4ed8;
+  --sky:#3b82f6;
+  --ice:#dbeafe;
+  --teal:#0d9488;
+  --gold:#d97706;
+  --cream:#fafaf9;
+  --white:#ffffff;
+  --gray1:#f8fafc;
+  --gray2:#f1f5f9;
+  --gray3:#e2e8f0;
+  --gray4:#94a3b8;
+  --gray5:#64748b;
+  --gray6:#475569;
+  --dark:#1e293b;
+  --serif:'DM Serif Display',serif;
+  --sans:'DM Sans',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--dark);line-height:1.7;overflow-x:hidden}
+
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:.4}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,249,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--gray3);padding:0 2rem}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-logo{font-family:var(--serif);font-size:1.1rem;color:var(--navy);letter-spacing:-.01em}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{font-size:.875rem;font-weight:500;color:var(--gray5);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--steel)}
+.nav-cta{background:var(--navy);color:#fff;padding:.45rem 1.1rem;border-radius:6px;font-size:.875rem;font-weight:500;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:var(--steel)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;place-items:center;padding:7rem 2rem 5rem;position:relative;background:linear-gradient(160deg,#ffffff 0%,#eff6ff 45%,#f0fdf4 100%)}
+.hero-inner{max-width:1100px;width:100%;display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:var(--ice);color:var(--steel);font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.35rem .9rem;border-radius:20px;margin-bottom:1.5rem}
+.hero-eyebrow span{width:6px;height:6px;border-radius:50%;background:var(--steel);display:inline-block;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+h1.hero-name{font-family:var(--serif);font-size:clamp(2.8rem,5vw,4rem);color:var(--navy);line-height:1.1;letter-spacing:-.02em;margin-bottom:.75rem}
+h1.hero-name em{font-style:italic;color:var(--steel)}
+.hero-title{font-size:1.1rem;font-weight:500;color:var(--gray5);margin-bottom:1.5rem}
+.hero-desc{font-size:1rem;color:var(--gray6);line-height:1.8;max-width:540px;margin-bottom:2.5rem}
+.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn-primary{background:var(--navy);color:#fff;padding:.7rem 1.6rem;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(15,36,68,.25)}
+.btn-outline{border:1.5px solid var(--gray3);color:var(--dark);padding:.68rem 1.6rem;border-radius:8px;font-weight:500;font-size:.9rem;text-decoration:none;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--steel);color:var(--steel)}
+.hero-card{background:#fff;border:1px solid var(--gray3);border-radius:16px;padding:2rem;box-shadow:0 4px 40px rgba(15,36,68,.08)}
+.hero-card-label{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray4);margin-bottom:1.25rem}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.stat{padding:1rem;background:var(--gray1);border-radius:10px;border:1px solid var(--gray2)}
+.stat-num{font-family:var(--serif);font-size:1.9rem;color:var(--navy);line-height:1}
+.stat-lbl{font-size:.75rem;color:var(--gray5);margin-top:.25rem}
+.hero-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.25rem}
+.tag{font-size:.72rem;font-weight:500;padding:.25rem .65rem;border-radius:4px;background:var(--gray2);color:var(--gray6)}
+.tag.blue{background:var(--ice);color:var(--steel)}
+
+/* ── SECTIONS ── */
+section{padding:5rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:.75rem}
+.section-title{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.4rem);color:var(--navy);line-height:1.2;margin-bottom:.75rem}
+.section-sub{font-size:1rem;color:var(--gray5);max-width:560px;line-height:1.7;margin-bottom:3rem}
+
+/* ── SKILLS ── */
+#skills{background:#fff}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.skill-card{border:1px solid var(--gray3);border-radius:12px;padding:1.5rem;transition:border-color .2s,box-shadow .2s}
+.skill-card:hover{border-color:var(--sky);box-shadow:0 4px 20px rgba(59,130,246,.1)}
+.skill-icon{width:40px;height:40px;border-radius:8px;display:grid;place-items:center;margin-bottom:1rem;font-size:1.2rem}
+.skill-icon.blue{background:var(--ice)}
+.skill-icon.teal{background:#ccfbf1}
+.skill-icon.gold{background:#fef3c7}
+.skill-card h3{font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:.5rem}
+.skill-card p{font-size:.85rem;color:var(--gray5);line-height:1.6}
+.skill-pills{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.85rem}
+.pill{font-size:.7rem;font-weight:500;padding:.2rem .55rem;border-radius:3px;background:var(--gray2);color:var(--gray6);font-family:var(--mono)}
+
+/* ── EXPERIENCE ── */
+#experience{background:var(--cream)}
+.exp-timeline{position:relative;padding-left:2rem}
+.exp-timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--steel),var(--teal))}
+.exp-item{position:relative;padding-bottom:2.5rem}
+.exp-item::before{content:'';position:absolute;left:-2.375rem;top:6px;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--steel)}
+.exp-item:last-child::before{border-color:var(--teal)}
+.exp-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.5rem}
+.exp-role{font-size:1.05rem;font-weight:600;color:var(--navy)}
+.exp-company{font-size:.9rem;color:var(--steel);font-weight:500}
+.exp-date{font-size:.78rem;font-family:var(--mono);color:var(--gray4);white-space:nowrap;padding:.2rem .6rem;background:var(--gray2);border-radius:4px;align-self:flex-start;margin-top:3px}
+.exp-tag{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:.2rem .6rem;border-radius:3px;margin-bottom:.75rem}
+.exp-tag.enterprise{background:#fef3c7;color:#92400e}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.exp-bullets li{font-size:.88rem;color:var(--gray6);padding-left:1rem;position:relative;line-height:1.65}
+.exp-bullets li::before{content:'→';position:absolute;left:0;color:var(--steel);font-weight:600}
+
+/* ── PROJECTS ── */
+#projects{background:#fff}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+.project-card{border:1px solid var(--gray3);border-radius:14px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(15,36,68,.1)}
+.project-header{padding:1.5rem 1.5rem 1rem;border-bottom:1px solid var(--gray2)}
+.project-client{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.project-name{font-size:1.05rem;font-weight:600;color:var(--navy);margin-bottom:.4rem}
+.project-type{font-size:.78rem;color:var(--gray5)}
+.project-body{padding:1rem 1.5rem 1.5rem}
+.project-bullets{list-style:none;display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
+.project-bullets li{font-size:.83rem;color:var(--gray6);padding-left:.9rem;position:relative;line-height:1.6}
+.project-bullets li::before{content:'▸';position:absolute;left:0;color:var(--steel);font-size:.7rem;top:.15rem}
+.project-stack{display:flex;flex-wrap:wrap;gap:.3rem}
+
+/* ── METRICS ── */
+#metrics{background:var(--navy);color:#fff}
+#metrics .section-label{color:#93c5fd}
+#metrics .section-title{color:#fff}
+#metrics .section-sub{color:#94a3b8}
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem}
+.metric-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:1.75rem;text-align:center}
+.metric-num{font-family:var(--serif);font-size:2.8rem;color:#fff;line-height:1;margin-bottom:.4rem}
+.metric-num span{font-size:1.6rem;color:#93c5fd}
+.metric-desc{font-size:.83rem;color:#94a3b8;line-height:1.5}
+
+/* ── ABOUT ── */
+#about{background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:start}
+.about-text p{color:var(--gray6);font-size:.95rem;line-height:1.8;margin-bottom:1rem}
+.about-links{display:flex;flex-direction:column;gap:.75rem}
+.about-link{display:flex;align-items:center;gap:.75rem;padding:1rem 1.25rem;background:#fff;border:1px solid var(--gray3);border-radius:10px;text-decoration:none;transition:border-color .2s}
+.about-link:hover{border-color:var(--steel)}
+.about-link-icon{width:36px;height:36px;border-radius:8px;display:grid;place-items:center;font-size:1rem;flex-shrink:0}
+.about-link-icon.li{background:#dbeafe}
+.about-link-icon.gh{background:#f3f4f6}
+.about-link-icon.nv{background:#fef3c7}
+.about-link-icon.em{background:#f0fdf4}
+.about-link-text strong{display:block;font-size:.85rem;font-weight:600;color:var(--dark)}
+.about-link-text span{font-size:.75rem;color:var(--gray4)}
+
+/* ── CONTACT ── */
+#contact{background:#fff;border-top:1px solid var(--gray3)}
+.contact-inner{text-align:center;max-width:580px;margin:0 auto}
+.contact-inner .section-title{margin-bottom:.75rem}
+.contact-inner .section-sub{margin:0 auto 2rem}
+.contact-actions{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);color:#94a3b8;text-align:center;padding:1.5rem;font-size:.8rem}
+
+/* ── ANIMATIONS ── */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">Anushi Mittal</span>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#metrics">Impact</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <a href="mailto:anushimittal015@gmail.com" class="nav-cta">Hire Me</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="fade-up">
+      <div class="hero-eyebrow"><span></span> Available for new opportunities</div>
+      <h1 class="hero-name">Anushi<br/><em>Mittal</em></h1>
+      <p class="hero-title">Data & BI Analyst &nbsp;·&nbsp; Power BI &nbsp;·&nbsp; SQL &nbsp;·&nbsp; Python</p>
+      <p class="hero-desc">I turn complex data into clear decisions. 2+ years delivering end-to-end analytics and automation for enterprise clients including <strong>ExxonMobil</strong> — building dashboards, pipelines, and business intelligence that actually gets used.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">View My Work</a>
+        <a href="mailto:anushimittal015@gmail.com" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-card fade-up" style="animation-delay:.15s">
+      <div class="hero-card-label">At a Glance</div>
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-num">20+</div>
+          <div class="stat-lbl">Analytics solutions delivered</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">30%+</div>
+          <div class="stat-lbl">Reporting efficiency gained</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">1M+</div>
+          <div class="stat-lbl">Rows analysed with SQL</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2 yrs</div>
+          <div class="stat-lbl">Enterprise BI experience</div>
+        </div>
+      </div>
+      <div class="hero-tags">
+        <span class="tag blue">Power BI</span>
+        <span class="tag blue">DAX</span>
+        <span class="tag blue">SQL</span>
+        <span class="tag">Python</span>
+        <span class="tag">ETL</span>
+        <span class="tag">Cohort Analysis</span>
+        <span class="tag">KPI Design</span>
+        <span class="tag">ExxonMobil</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label fade-up">What I Work With</div>
+    <h2 class="section-title fade-up">Technical Skills</h2>
+    <p class="section-sub fade-up">A practical toolkit built through real enterprise projects — not just coursework.</p>
+    <div class="skills-grid">
+      <div class="skill-card fade-up">
+        <div class="skill-icon blue">📊</div>
+        <h3>Business Intelligence</h3>
+        <p>Building production Power BI dashboards with complex DAX, Power Query transformations, and Star Schema data models for real-time business decision-making.</p>
+        <div class="skill-pills"><span class="pill">Power BI</span><span class="pill">DAX</span><span class="pill">Power Query</span><span class="pill">Star Schema</span><span class="pill">Tableau</span></div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon blue">🗄️</div>
+        <h3>SQL & Data Analysis</h3>
+        <p>Advanced SQL on datasets of 1M+ rows — joins, CTEs, window functions, funnel analysis, cohort analysis, and variance analysis to surface actionable insights.</p>
+        <div class="skill-pills"><span class="pill">SQL</span><span class="pill">CTEs</span><span class="pill">Window Fns</span><span class="pill">Funnel</span><span class="pill">Cohort</span></div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon teal">🐍</div>
+        <h3>Python & Automation</h3>
+        <p>Data cleaning, transformation, and preprocessing with Pandas. Workflow automation via REST APIs and WhatsApp bots that reduced manual effort by ~30%.</p>
+        <div class="skill-pills"><span class="pill">Python</span><span class="pill">Pandas</span><span class="pill">NumPy</span><span class="pill">REST API</span><span class="pill">WhatsApp API</span></div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon teal">🔧</div>
+        <h3>Data Engineering</h3>
+        <p>Building and maintaining ETL pipelines, data validation frameworks, and reconciliation workflows that deliver 99%+ accuracy standards across reporting systems.</p>
+        <div class="skill-pills"><span class="pill">ETL</span><span class="pill">Data Cleaning</span><span class="pill">Validation</span><span class="pill">Reconciliation</span></div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon gold">📈</div>
+        <h3>Analytics & Strategy</h3>
+        <p>Translating ambiguous business needs into KPI frameworks, stakeholder dashboards, and analytical models — from requirement gathering through UAT to delivery.</p>
+        <div class="skill-pills"><span class="pill">KPI Design</span><span class="pill">EDA</span><span class="pill">Statistics</span><span class="pill">Agile</span><span class="pill">UAT</span></div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon gold">🛠️</div>
+        <h3>Tools & Platforms</h3>
+        <p>Excel power user (Pivot Tables, Power Query, advanced formulas). Comfortable in Agile environments, stakeholder communication, and cross-functional collaboration.</p>
+        <div class="skill-pills"><span class="pill">Excel</span><span class="pill">Pivot Tables</span><span class="pill">Power Query</span><span class="pill">GitHub</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label fade-up">Career</div>
+    <h2 class="section-title fade-up">Work Experience</h2>
+    <p class="section-sub fade-up">2+ years building analytics solutions for enterprise clients across loyalty, retention, and reporting domains.</p>
+    <div class="exp-timeline">
+
+      <div class="exp-item fade-up">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Data Analyst</div>
+            <div class="exp-company">Zeapl.AI</div>
+          </div>
+          <div class="exp-date">Jun 2024 – Present</div>
+        </div>
+        <span class="exp-tag enterprise">Enterprise · ExxonMobil</span>
+        <ul class="exp-bullets">
+          <li>Delivered 20+ end-to-end analytics and automation solutions for enterprise clients including ExxonMobil, improving reporting efficiency by 30%+.</li>
+          <li>Built 8+ real-time Power BI dashboards (DAX, Power Query, Star Schema), replacing 5+ manual Excel processes and cutting decision cycle time by ~40%.</li>
+          <li>Performed advanced SQL analysis on 1M+ row datasets, improving data accuracy by ~25% through rigorous cleaning and reconciliation workflows.</li>
+          <li>Conducted funnel, cohort, trend, and variance analysis to identify user drop-offs and optimize business workflows for stakeholders.</li>
+          <li>Automated 10+ workflows using REST APIs and WhatsApp bots — reducing manual effort by ~30% and operational costs by ~20%.</li>
+          <li>Maintained 99%+ data accuracy standards through end-to-end UAT, data validation, and cross-functional stakeholder collaboration.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Business Analyst</div>
+            <div class="exp-company">1Lattice</div>
+          </div>
+          <div class="exp-date">Nov 2023 – May 2024</div>
+        </div>
+        <span class="exp-tag" style="background:#f0fdf4;color:#166534">BI Reporting · KPI Frameworks</span>
+        <ul class="exp-bullets">
+          <li>Owned requirement gathering for 20+ analytics requests, translating business needs into SQL-driven reports and Power BI dashboards.</li>
+          <li>Designed KPI frameworks that reduced ad-hoc reporting requests by ~35% through standardised reporting structures.</li>
+          <li>Automated 5 weekly manual reports — cutting turnaround from 3 days to same-day delivery and saving ~15 analyst hours/week.</li>
+          <li>Improved dashboard data accuracy through systematic validation and reconciliation, achieving near-zero defect rate.</li>
+          <li>Cleaned, transformed, and preprocessed multi-source datasets using Python (Pandas), standardising ETL pipelines.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label fade-up">Portfolio</div>
+    <h2 class="section-title fade-up">Key Projects</h2>
+    <p class="section-sub fade-up">A selection of analytics and BI projects delivered for enterprise and commercial clients.</p>
+    <div class="projects-grid">
+
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <div class="project-client">ExxonMobil · Fortune 500</div>
+          <div class="project-name">Rewards & Loyalty Chatbot Analytics</div>
+          <div class="project-type">Dashboard Development · Funnel Analysis · SQL</div>
+        </div>
+        <div class="project-body">
+          <ul class="project-bullets">
+            <li>Built analytics dashboards tracking WhatsApp chatbot performance, rewards redemption, and user journeys for real-time stakeholder visibility.</li>
+            <li>Analysed user drop-offs, response times, and conversion rates via SQL data models — identifying 3 key drop-off points and improving engagement by 15%.</li>
+            <li>Designed funnel dashboards to optimize customer interaction flow and referral tracking for ExxonMobil's loyalty programme.</li>
+          </ul>
+          <div class="project-stack">
+            <span class="pill">Power BI</span><span class="pill">SQL</span><span class="pill">DAX</span><span class="pill">WhatsApp API</span><span class="pill">Funnel Analysis</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <div class="project-client">Zeapl.AI · Enterprise Client</div>
+          <div class="project-name">Customer Retention & Cohort Analysis</div>
+          <div class="project-type">Cohort Analysis · Power BI · Churn Modelling</div>
+        </div>
+        <div class="project-body">
+          <ul class="project-bullets">
+            <li>Conducted SQL cohort analysis to track retention rates, churn behaviour, and repeat purchase patterns across monthly acquisition cohorts.</li>
+            <li>Built retention heatmaps and churn dashboards in Power BI, enabling identification of high-risk customer segments.</li>
+            <li>Delivered insights contributing to measurable improvement in 90-day customer retention rate by surfacing lifecycle patterns.</li>
+          </ul>
+          <div class="project-stack">
+            <span class="pill">SQL</span><span class="pill">Power BI</span><span class="pill">Cohort Analysis</span><span class="pill">Retention Heatmaps</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <div class="project-client">1Lattice · Internal</div>
+          <div class="project-name">KPI Framework & Reporting Automation</div>
+          <div class="project-type">KPI Design · Reporting Automation · Python</div>
+        </div>
+        <div class="project-body">
+          <ul class="project-bullets">
+            <li>Designed standardised KPI frameworks across business units, reducing ad-hoc reporting requests by ~35%.</li>
+            <li>Automated 5 weekly manual reports using Power BI and Python (Pandas), reducing turnaround from 3 days to same-day.</li>
+            <li>Established data validation and reconciliation protocols achieving near-zero defect rate across all delivered dashboards.</li>
+          </ul>
+          <div class="project-stack">
+            <span class="pill">Power BI</span><span class="pill">Python</span><span class="pill">Pandas</span><span class="pill">KPI Design</span><span class="pill">ETL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <div class="project-client">Zeapl.AI · Enterprise</div>
+          <div class="project-name">Workflow Automation with REST API & WhatsApp Bots</div>
+          <div class="project-type">API Integration · Automation · Operations</div>
+        </div>
+        <div class="project-body">
+          <ul class="project-bullets">
+            <li>Automated 10+ operational workflows using REST APIs and WhatsApp bots, reducing manual effort by ~30%.</li>
+            <li>Reduced operational costs by ~20% through intelligent automation of repetitive data collection and reporting tasks.</li>
+            <li>Integrated multiple data sources into unified pipelines, enabling real-time reporting for business stakeholders.</li>
+          </ul>
+          <div class="project-stack">
+            <span class="pill">REST API</span><span class="pill">WhatsApp API</span><span class="pill">Python</span><span class="pill">Automation</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section id="metrics">
+  <div class="container">
+    <div class="section-label fade-up">Impact</div>
+    <h2 class="section-title fade-up">By the Numbers</h2>
+    <p class="section-sub fade-up">Measurable outcomes from analytics work across enterprise and commercial projects.</p>
+    <div class="metrics-grid">
+      <div class="metric-card fade-up">
+        <div class="metric-num">20<span>+</span></div>
+        <div class="metric-desc">End-to-end analytics & automation solutions delivered</div>
+      </div>
+      <div class="metric-card fade-up">
+        <div class="metric-num">30<span>%+</span></div>
+        <div class="metric-desc">Reporting efficiency improvement across business teams</div>
+      </div>
+      <div class="metric-card fade-up">
+        <div class="metric-num">1M<span>+</span></div>
+        <div class="metric-desc">Rows analysed with advanced SQL per project</div>
+      </div>
+      <div class="metric-card fade-up">
+        <div class="metric-num">40<span>%</span></div>
+        <div class="metric-desc">Reduction in decision cycle time via Power BI dashboards</div>
+      </div>
+      <div class="metric-card fade-up">
+        <div class="metric-num">15<span>h</span></div>
+        <div class="metric-desc">Analyst hours saved per week through report automation</div>
+      </div>
+      <div class="metric-card fade-up">
+        <div class="metric-num">99<span>%+</span></div>
+        <div class="metric-desc">Data accuracy standard maintained across all dashboards</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="section-label fade-up">Background</div>
+        <h2 class="section-title fade-up">About Me</h2>
+        <div class="fade-up">
+          <p>I'm a Data & BI Analyst based in Noida, India, with 2+ years of experience turning messy, complex datasets into clean dashboards and automation systems that businesses actually rely on.</p>
+          <p>My work spans the full analytics stack — from writing advanced SQL queries on million-row datasets to building production Power BI dashboards with DAX and Power Query, to automating workflows with Python and REST APIs.</p>
+          <p>I've worked with enterprise clients including <strong>ExxonMobil</strong>, where I built chatbot analytics, loyalty dashboards, and funnel analysis systems. I take pride in being the person who bridges the gap between raw data and the business decisions that follow.</p>
+          <p>I hold an Advanced Certificate in Applied Data Science, ML & IoT from <strong>IIT Guwahati</strong> and am actively looking for Data Analyst, Power BI Developer, and BI Analyst roles where I can make a measurable impact.</p>
+        </div>
+      </div>
+      <div class="fade-up">
+        <div style="font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray4);margin-bottom:1rem">Connect & Find Me</div>
+        <div class="about-links">
+          <a href="https://www.linkedin.com/in/anushi-mittal-97a5b91b8/" target="_blank" class="about-link">
+            <div class="about-link-icon li">💼</div>
+            <div class="about-link-text"><strong>LinkedIn</strong><span>linkedin.com/in/anushi-mittal-97a5b91b8</span></div>
+          </a>
+          <a href="https://github.com/Mittal-99" target="_blank" class="about-link">
+            <div class="about-link-icon gh">🐙</div>
+            <div class="about-link-text"><strong>GitHub</strong><span>github.com/Mittal-99</span></div>
+          </a>
+          <a href="https://www.novypro.com/profile_projects/anushi-mittal" target="_blank" class="about-link">
+            <div class="about-link-icon nv">📊</div>
+            <div class="about-link-text"><strong>NovyPro Portfolio</strong><span>Power BI dashboard showcase</span></div>
+          </a>
+          <a href="mailto:anushimittal015@gmail.com" class="about-link">
+            <div class="about-link-icon em">✉️</div>
+            <div class="about-link-text"><strong>Email</strong><span>anushimittal015@gmail.com</span></div>
+          </a>
+        </div>
+        <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:#fff;border:1px solid var(--gray3);border-radius:10px">
+          <div style="font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray4);margin-bottom:.6rem">Open To</div>
+          <div style="display:flex;flex-wrap:wrap;gap:.35rem">
+            <span class="tag blue">Data Analyst</span>
+            <span class="tag blue">Power BI Developer</span>
+            <span class="tag blue">BI Analyst</span>
+            <span class="tag">Reporting Analyst</span>
+            <span class="tag">SQL Analyst</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="section-label fade-up">Let's Talk</div>
+      <h2 class="section-title fade-up">Open to New Opportunities</h2>
+      <p class="section-sub fade-up">If you're looking for a Data or BI Analyst who delivers enterprise-grade dashboards, SQL analytics, and automation — let's connect.</p>
+      <div class="contact-actions fade-up">
+        <a href="mailto:anushimittal015@gmail.com" class="btn-primary">Email Me</a>
+        <a href="https://www.linkedin.com/in/anushi-mittal-97a5b91b8/" target="_blank" class="btn-outline">LinkedIn</a>
+        <a href="https://github.com/Mittal-99" target="_blank" class="btn-outline">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Anushi Mittal &nbsp;·&nbsp; Data & BI Analyst &nbsp;·&nbsp; Noida, India</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
